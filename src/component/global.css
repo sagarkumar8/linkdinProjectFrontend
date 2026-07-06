@@ -1,0 +1,104 @@
+* {
+  box-sizing: border-box;
+}
+
+.button {
+ padding: 10px 20px;
+ border: unset;
+ border-radius: 15px;
+ color: #212121;
+ z-index: 1;
+ background: #e8e8e8;
+ position: relative;
+ font-weight: 1000;
+ font-size: 17px;
+ -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+ box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+ transition: all 250ms;
+ overflow: hidden;
+}
+
+.button::before {
+ content: "";
+ position: absolute;
+ top: 0;
+ left: 0;
+ height: 100%;
+ width: 0;
+ border-radius: 15px;
+ background-color: #294dba;
+ z-index: -1;
+ -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+ box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+ transition: all 250ms
+}
+
+.button:hover {
+ color: #e8e8e8;
+}
+
+.button:hover::before {
+ width: 100%;
+  cursor: pointer;
+}
+
+
+.input {
+  border: 2px solid rgb(187, 186, 195);
+  width: 100%;
+  font-size: 1.2rem;
+  padding: 0.5em;
+  outline: none;
+  overflow: hidden;
+  background-color: #F3F3F3;
+  border-radius: 10px;
+box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  transition: all 0.2s;
+}
+
+.input:focus {
+  border: 2px solid #4A9DEC;
+  
+  background-color: white;
+}
+
+.form-input.error{
+
+  border: 2px solid red;
+}
+
+
+.loader {
+     margin-top: 5rem;
+    width: 48px;
+    height: 48px;
+    border: 5px solid #2260e5;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    }
+
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+    } 
+
+
+
+    /* **********------- post section------------------------ */
+
+    .post-section-container{
+      border: 2px solid green;
+    }
+
+
+
+    /* ---------------------- post ----------------------------------- */
+
+    
