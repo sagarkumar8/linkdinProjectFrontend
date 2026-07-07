@@ -45,7 +45,7 @@ const CreatePostSection = (props)=>{
 
     
     return (
-        <div className="p-4 relative border-2 shadow-md rounded-md">
+        <div className="p-4 relative border-2 shadow-md rounded-md bg-white">
             <div className="flex justify-between ">
                 <h3 className="text-xl font-bold text">Activity</h3>
                 <button type="button" className="blue-btn" onClick={()=>{setCreatePost(true)}}>Create a post</button>

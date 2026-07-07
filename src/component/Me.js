@@ -9,13 +9,13 @@ import Post from "./Post"
 
 const Me = (props)=>{
 
-    console.log("me post ",props.userPost)
+   
  
     
 
     return <div>
        
-       <div className="w-full h-full flex justify-center gap-5">
+       <div className="w-full h-full flex justify-center gap-5 mt-[80px]">
            <div className="w-[55%] flex flex-col gap-4">
             <Profile user={props.user} updateData={props.updateData}></Profile>
             <CreatePostSection createPost={props.createPost} userPost={props.userPost}></CreatePostSection>

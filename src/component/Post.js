@@ -7,12 +7,93 @@ import { TbLocationShare } from "react-icons/tb";
 import { BsSendFill } from "react-icons/bs";
 import { useState } from "react";
 import axios from "axios";
+import Comment from "./Comment";
+import { useEffect } from "react";
 
 const Post = (props)=>{
 
     const [commentContent,setCommentContent]=useState("");
+     const [commentList,setCommentList]=useState([]);
     const [isComment,setIsComment]=useState(false)
     const [liked, setLiked] =  useState(props.postData.postLikedByMe);
+
+     const [page, setPage] = useState(0);
+     const [isLastPage, setIsLastPage] = useState(false);
+
+
+     
+
+    
+        useEffect(() => { 
+    if (isComment) {
+        getComment(props.postData.id, page);
+    } else {
+      
+        setPage(0);
+        setCommentList([]);
+        setIsLastPage(false);
+    }
+    }, [page, isComment, props.postData.id]);
+
+
+
+    
+
+
+    async function getComment(postId,page)
+
+    {
+        try {
+            const commentResponce = await axios.get(`http://localhost:8080/comment/${postId}/${page}`);
+            console.log(commentResponce.data)
+            setCommentContent("");
+            const newData = commentResponce.data.content;
+            if (page === 0) {
+                        setCommentList(newData);
+                    } else {
+                        setCommentList((prev) => [...prev, ...newData]);
+                    }
+
+                    setIsLastPage(commentResponce.data.last); 
+                     console.log("get comment ",commentResponce)
+            
+            } catch (error) {
+                console.log("get comment error",error)
+                
+            }
+
+
+    }
+
+   
+
+         
+                 
+    const handleViewMore = () => {
+                 setPage((prevPage) => prevPage + 1);
+                 };
+    
+
+
+
+async function commentSubmit(e)
+{  e.preventDefault();
+   try {
+    const commentResponce = await axios.post(`http://localhost:8080/comment`,{postId:props.postData.id,commentContent:commentContent});
+    console.log(commentResponce.data)
+    setCommentList((prev) => [commentResponce.data, ...prev]);
+    setCommentContent("");
+    
+   } catch (error) {
+    console.log("post comment error",error)
+    
+   }
+
+}
+
+
+
+
   
    async function likeHandler(e)
     {
@@ -39,7 +120,7 @@ const Post = (props)=>{
 
 
     return (
-    <div className="border-2 rounded-md shadow-md ">
+    <div className="border-2 rounded-md shadow-md bg-white ">
 
         <div className=" flex  gap-2 p-3 ">
                         <div className="h-[50px] w-[50px] border-2 rounded-full">
@@ -105,7 +186,7 @@ const Post = (props)=>{
         </div>
         { isComment &&(
          <div className=" p-1"> 
-            <form className=" flex gap-3 justify-center ">
+            <form className=" flex gap-3 justify-center " onSubmit={commentSubmit}>
                 <div className="h-[40px] w-[40px] border-2 rounded-full">
                     <img src={profileImage} className="object-cover h-full w-full rounded-full "></img>
                 </div>
@@ -132,6 +213,20 @@ const Post = (props)=>{
                
                 
             </form>
+
+            <div className="flex flex-col ">
+
+                        {commentList.map((comment) => (
+                            <Comment key={comment.commentId} commentData={comment} />
+                        ))}
+           </div>
+
+
+            {!isLastPage && commentList.length > 0 && (<button type="button" onClick={handleViewMore}> View More </button>)
+                    }
+
+             {isLastPage &&  (<p className="text-gray-400 text-sm mt-4">No more comment available.</p> ) }
+
 
 
         </div>)

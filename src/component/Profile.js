@@ -96,7 +96,7 @@ console.log(isEditing)
 console.log(props)
 return (
     <div>
-        <div className="relative w-full border-2 rounded-md shadow-md">
+        <div className="relative w-full border-2 rounded-md shadow-md bg-white">
             <div className="h-[12rem] w-full border-2">
                <img src={props.user.conerPhotoUrl || defaultCover} className="h-full w-full object-cover "></img>
             </div>

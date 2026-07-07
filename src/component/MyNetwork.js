@@ -118,11 +118,11 @@ function MyNetwork()
 
 
     return(
-        <div className="">
+        <div className="mt-[80px]">
             <div className="w-full h-full flex justify-center gap-5   ">
-                    <div className="w-[20%] border-2 shadow-md"></div>
+                    <div className="w-[20%] border-2 shadow-md "></div>
 
-                    <div className="w-[60%] flex flex-col gap-5 mt-5">
+                    <div className="w-[60%] flex flex-col bg-white gap-5 mt-5">
 
 
                             <div className=" flex flex-col gap-3 justify-center items-center ">

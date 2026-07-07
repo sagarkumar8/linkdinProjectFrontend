@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
 import Post from "./Post";
+import SideProfile from "./Sideprofile";
 const Home = (props)=>{
 
 
@@ -56,9 +57,12 @@ const Home = (props)=>{
 
 
 
-    return <div className="w-full flex gap-5 justify-center items-start mt-5">
+    return <div className="w-[100%] flex justify-center ">
+        <div className=" w-[95%] flex gap-5 justify-center  items-start mt-[80px] ">
 
-        <div className="h-[200px] w-[200px] border-2"></div>
+        <div className=" w-[200px]   hidden  lg:block sticky top-[80px] ">
+            <SideProfile></SideProfile>
+        </div>
         <div className="w-[700px]  flex justify-center items-center flex-col ">
 
 
@@ -90,8 +94,9 @@ const Home = (props)=>{
              }
 
          </div>
-        <div className="w-[300px] h-[300px] border-2" ></div>
+        <div className="w-[300px] h-[300px] border-2 shadow-md hidden md:block" ></div>
         
+    </div>
     </div>
 }
 

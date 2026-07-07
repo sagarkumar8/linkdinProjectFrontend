@@ -48,7 +48,7 @@ const Notifications = ()=>{
 
 
 
-    return <div className="w-full  flex justify-center  items-center">
+    return <div className="w-full  flex justify-center  items-center mt-[80px]">
 
         <div className="flex gap-5 items-start justify-center   ">
             <div className="border-2 w-[225px] h-[250px] rounded-md shadow-md">
